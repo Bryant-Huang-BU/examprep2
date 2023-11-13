@@ -11,31 +11,6 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    List<User> findByEmailAddressAndPassword(String user, String pass);
-    List<User> findByEmailAddress(String email);
+public interface StudentRepository extends JpaRepository<student, Long> {
 
-
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.username=:username, u.emailAddress=:email, u.password=:password WHERE u.id=:id")
-    void updateUser(@Param("username") String username, @Param("email") String email, @Param("password") String password, @Param("id") Long id);
-
-    List<User> findByUsernameAndPassword(String username, String password);
-    List<User> findUserByUserType(String userType);
-    List<User> findUserByUsernameContainingIgnoreCase(String username);
-    List<User> findUserByUsernameContainingIgnoreCaseAndPassword(String username, String password);
-    List<User> findUserByUsernameContainingIgnoreCaseAndUserType(String username, String type);
-
-    User findUserByUsername(String username);
-
-    List<User> findUserByUsernameIgnoreCase(String username);
-
-    List<User> findUsersByUserTypeIgnoreCase(String type);
-
-    List<User> findUsersById(Long id);
-
-    //List<User> findByUserSubjects(String subjects);
-
-    //subjectList findByUser_Subjects(subjectList User_Subjects);
 }
